@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { GameLevel, RoomState, UserSession, PreferenceScore } from './types';
-import { TheMatcher } from './components/TheMatcher';
-import { GameTable } from './components/GameTable';
-import { INVENTORY } from './constants';
+import { GameLevel, RoomState, UserSession, PreferenceScore } from './types.ts';
+import { TheMatcher } from './components/TheMatcher.tsx';
+import { GameTable } from './components/GameTable.tsx';
+import { INVENTORY } from './constants.tsx';
 
 const App: React.FC = () => {
   const [step, setStep] = useState<'welcome' | 'role' | 'setup' | 'matcher' | 'inventory' | 'share' | 'game'>('welcome');
@@ -80,7 +80,6 @@ const App: React.FC = () => {
 
   const finalizeSession = () => {
     if (localUser.role === 'Partner A') {
-      // Генерируем ссылку для Партнера Б
       const userData = {
         name: localUser.name,
         gender: localUser.gender,
@@ -93,7 +92,6 @@ const App: React.FC = () => {
       setSyncLink(url);
       setStep('share');
     } else {
-      // Партнер Б завершил настройку, можно начинать
       setRoom(prev => ({
         ...prev,
         partnerB: localUser as UserSession
@@ -239,12 +237,12 @@ const App: React.FC = () => {
             >
               Копировать ссылку
             </button>
-            <p className="text-slate-500 text-xs">Как только партнер перейдет по ссылке и закончит настройку, вы сможете начать игру на одном из устройств (или следовать ходам на обоих).</p>
+            <p className="text-slate-500 text-xs">Как только партнер перейдет по ссылке и закончит настройку, вы сможете начать игру.</p>
             <button 
               onClick={() => setStep('game')}
               className="mt-8 text-rose-500 text-sm font-bold border-b border-rose-500"
             >
-              Я уже отправил, начать игру (ожидая партнера)
+              Я уже отправил, начать игру
             </button>
           </div>
         )}
