@@ -1,0 +1,7 @@
+{
+  "name": "Seduction Sync: Couples Game",
+  "description": "An intimate synchronization game for couples featuring fantasy calibration, progressive intensity levels, and AI-powered task generation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
